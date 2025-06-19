@@ -7,9 +7,7 @@
     display: flex;
     position: relative;
     justify-content: center;
-    font-family: 'Cabinet Grotesk', sans-serif;
-    margin-right: 20px;
-    width: 328px;
+    width: 323px;
     height: 328px;
 }
 
@@ -17,9 +15,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Cabinet Grotesk', sans-serif;
     font-size: 16px;
     font-weight: 700;
-    margin: 15px 0 125px;
+    margin: 0;
+    top: 15px;
     position: absolute;
     opacity: 60%;
     background-color: #fff;
@@ -28,7 +28,8 @@
     border-radius: 4px;
 }
 
-.card__img {
+.card__image {
     border-radius: 14px;
     border: rgba(0, 0, 0, 0.3) 1px solid;
+    width: 100%;
 }
