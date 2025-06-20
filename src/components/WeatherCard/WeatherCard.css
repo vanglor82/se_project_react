@@ -10,6 +10,7 @@
     border-radius: 12px;
     overflow: hidden;
     font-family: "Cabinet Grotesk", sans-serif;
+    cursor: pointer;
 }
 
 .weather-card__temp {

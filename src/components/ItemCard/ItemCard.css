@@ -11,6 +11,10 @@
     height: 328px;
 }
 
+.card:hover {
+    cursor: pointer;
+}
+
 .card__name {
     display: flex;
     align-items: center;

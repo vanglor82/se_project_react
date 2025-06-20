@@ -1,0 +1,116 @@
+@font-face {
+    src: url(../../vendor/fonts/CabinetGrotesk-Regular.otf) format('opentype');
+    font-family: 'Cabinet Grotesk';
+}
+
+.modal {
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-weight: 700;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.modal__opened {
+    visibility: visible;
+}
+
+.modal__close {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../assets/close-btn.png);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.modal__title {
+    margin: 0 0 24px;
+    font-size: 16px;
+}
+
+.modal__content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 20px;
+    max-width: 498px;
+    max-height: 610px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 28px 28px 36px;
+}
+
+.modal__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+}
+
+.modal__input {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    border: none;
+    border-bottom: 1px solid;
+}
+
+.modal__radio-title {
+    margin: 0 0 12px;
+    font-size: 16px;
+}
+
+.modal__radio-label {
+    gap: 8px;
+    display: flex;
+    opacity: 50%;
+}
+
+.modal__radio-label:hover {
+    opacity: 100%;
+    transition: ease-in-out 0.3s;
+}
+
+.modal__radio-btns {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 0;
+    gap: 8px;   
+}
+
+.modal__radio-input {
+    accent-color: #000;
+    cursor: pointer;
+}
+
+
+.modal__submit {
+    width: 124px;
+    height: 36px;
+    background-color: #000;
+    opacity: 30%;
+    color: #fff;
+    border-radius: 4px;
+    margin-top: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.modal__submit:hover {
+    opacity: 100%;
+    transition: ease-in-out 0.3s;
+}
