@@ -10,6 +10,8 @@ The idea of the application is pretty simple - we make a call to an API, which t
 
 - [Repo Link](https://github.com/vanglor82/se_project_react.git)
 
+- [Link] (https://vanglor82.github.io/se_project_react/)
+
 ## Technologies Used
 
 React & JSX
