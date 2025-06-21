@@ -75,17 +75,16 @@ function App() {
           <legend className="modal__radio-title">
             Select the weather type:
           </legend>
-          <label className="modal__radio-label">
+          <label className="modal__radio-label" htmlFor="hot">
             <input
               type="radio"
               id="hot"
               value="hot"
               className="modal__radio-input"
-              defaultChecked
             />
             Hot
           </label>
-          <label className="modal__radio-label">
+          <label className="modal__radio-label" htmlFor="warm">
             <input
               type="radio"
               id="warm"
@@ -94,7 +93,7 @@ function App() {
             />
             Warm
           </label>
-          <label className="modal__radio-label">
+          <label className="modal__radio-label" htmlFor="cold">
             <input
               type="radio"
               id="cold"

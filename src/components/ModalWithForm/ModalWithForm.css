@@ -80,8 +80,11 @@
 }
 
 .modal__radio-label:hover {
-    opacity: 100%;
-    transition: ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.modal__radio-label:has(input:checked) {
+  opacity: 1;
 }
 
 .modal__radio-btns {
@@ -97,7 +100,6 @@
     cursor: pointer;
 }
 
-
 .modal__submit {
     width: 124px;
     height: 36px;
@@ -111,6 +113,6 @@
 }
 
 .modal__submit:hover {
-    opacity: 100%;
+    opacity: 50%;
     transition: ease-in-out 0.3s;
 }
