@@ -46,6 +46,7 @@ function App() {
         <Main weatherData={weatherData} cardClick={cardClick} />
       </div>
       <ModalWithForm
+      isOpen={activeModal === "add-garment"}
         titleText="New garment"
         buttonText="Add garment"
         activeModal={activeModal}
@@ -79,6 +80,7 @@ function App() {
             <input
               type="radio"
               id="hot"
+              name= "temperature"
               value="hot"
               className="modal__radio-input"
             />
@@ -88,6 +90,7 @@ function App() {
             <input
               type="radio"
               id="warm"
+              name= "temperature"
               value="warm"
               className="modal__radio-input"
             />
@@ -97,6 +100,7 @@ function App() {
             <input
               type="radio"
               id="cold"
+              name= "temperature"
               value="cold"
               className="modal__radio-input"
             />
