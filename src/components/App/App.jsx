@@ -12,12 +12,16 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
-    temp: { F: 999 },
+    temp: { F: 999, C: 999 },
     city: "",
+    condition: "",
+    isDay: false,
   });
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isWeatherDataLoaded, setIsWeatherDataLoaded] = useState(false);
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
@@ -45,8 +49,12 @@ function App() {
       .then((data) => {
         const filterData = filterWeatherData(data);
         setWeatherData(filterData);
+        setIsWeatherDataLoaded(true);
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        setIsWeatherDataLoaded(false);
+      });
   }, []);
 
   return (
@@ -55,8 +63,16 @@ function App() {
     >
       <div className="app">
         <div className="app__content">
-          <Header addBtnClick={addBtnClick} weatherData={weatherData} />
-          <Main weatherData={weatherData} cardClick={cardClick} />
+          <Header
+            addBtnClick={addBtnClick}
+            weatherData={weatherData}
+            isWeatherDataLoaded={isWeatherDataLoaded}
+          />
+          <Main
+            weatherData={weatherData}
+            cardClick={cardClick}
+            isWeatherDataLoaded={isWeatherDataLoaded}
+          />
         </div>
         <ModalWithForm
           isOpen={activeModal === "add-garment"}
