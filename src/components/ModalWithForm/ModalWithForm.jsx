@@ -5,7 +5,8 @@ function ModalWithForm({
   buttonText,
   titleText,
   isOpen,
-  closeModal,
+  onClose,
+  onSubmit,
 }) {
   return (
     <div
@@ -14,11 +15,11 @@ function ModalWithForm({
       <div className="modal__content">
         <h2 className="modal__title">{titleText}</h2>
         <button
-          onClick={closeModal}
+          onClick={onClose}
           type="button"
           className="modal__close"
         ></button>
-        <form className="modal__form">
+        <form onSubmit={onSubmit} className="modal__form">
           {children}
           <button type="submit" className="modal__submit">
             {buttonText}
