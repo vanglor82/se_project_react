@@ -1,0 +1,31 @@
+.clothes-section__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.clothes-section__item {
+  display: flex;
+  gap: 20px;
+  margin-left: 360px;
+}
+
+.clothes-section__btn {
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: #00000099;
+}
+
+.clothes-section__btn:hover {
+  cursor: pointer;
+}
+
+.clothes-section__text {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+}
