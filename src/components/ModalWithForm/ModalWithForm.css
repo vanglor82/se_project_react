@@ -1,11 +1,4 @@
-@font-face {
-    src: url(../../vendor/fonts/CabinetGrotesk-Regular.otf) format('opentype');
-    font-family: 'Cabinet Grotesk';
-}
-
 .modal {
-    font-family: "Cabinet Grotesk", sans-serif;
-    font-weight: 700;
     position: fixed;
     top: 0;
     left: 0;
@@ -29,15 +22,15 @@
     width: 20px;
     height: 20px;
     background-image: url(../../assets/close-btn.png);
+    background-color: transparent;
     cursor: pointer;
     border: none;
-    background-color: transparent;
     padding: 0;
     margin: 0;
 }
 
 .modal__title {
-    margin: 0 0 24px;
+    margin: 28px 0 0 28px;
     font-size: 16px;
 }
 
@@ -47,17 +40,16 @@
     border-radius: 20px;
     max-width: 498px;
     max-height: 610px;
-    height: 100%;
     width: 100%;
     box-sizing: border-box;
-    padding: 28px 28px 36px;
 }
 
 .modal__form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 440px;
     gap: 24px;
+    margin: 24px 28px 36px 28px ;
 }
 
 .modal__input {

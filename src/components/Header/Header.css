@@ -1,15 +1,8 @@
-@font-face {
-    src: url(../../vendor/fonts/CabinetGrotesk-Regular.otf) format('opentype');
-    font-family: 'Cabinet Grotesk';
-}
-
 .header {
     display: flex;  
     align-items: center;
     padding: 32px 0 28px;
-    font-size: 20px;
-    font-weight: 700;
-    font-family: "Cabinet Grotesk", sans-serif;
+    font-size: 20px;   
 }
 
 .header__avatar:hover {
@@ -29,7 +22,6 @@
 
 .header__add-clothes-btn {
     margin: 0 20px 0 0;
-    font-weight: 700;
     border: none;
     cursor: pointer;
 }

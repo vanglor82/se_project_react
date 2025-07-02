@@ -1,12 +1,5 @@
-@font-face {
-  src: url(../../vendor/fonts/CabinetGrotesk-Regular.otf) format("opentype");
-  font-family: "Cabinet Grotesk";
-}
-
 .toggle-switch {
-  font-family: "Cabinet Grotesk", sans-serif;
   font-size: 14px;
-  font-weight: 700;
   color: gray;
   width: 56px;
   height: 28px;

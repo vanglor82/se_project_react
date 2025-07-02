@@ -14,10 +14,8 @@
 .clothes-section__btn {
   border: none;
   background: transparent;
-  font-weight: 700;
   font-size: 20px;
-  line-height: 100%;
-  color: #00000099;
+  opacity: 60%;
 }
 
 .clothes-section__btn:hover {
@@ -25,7 +23,5 @@
 }
 
 .clothes-section__text {
-  font-weight: 700;
   font-size: 20px;
-  line-height: 100%;
 }

@@ -6,7 +6,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import "./Main.css";
 
 
-function Main({ weatherData, cardClick, isWeatherDataLoaded, clothingItems }) {
+function Main({ weatherData, onCardClick, isWeatherDataLoaded, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
@@ -42,7 +42,7 @@ function Main({ weatherData, cardClick, isWeatherDataLoaded, clothingItems }) {
                   <ItemCard
                     key={item._id}
                     item={item}
-                    onCardClick={cardClick}
+                    onCardClick={onCardClick}
                   />
                 );
               })}

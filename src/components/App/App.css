@@ -1,5 +1,12 @@
+@font-face {
+  src: url(../../vendor/fonts/CabinetGrotesk-Regular.otf) format("opentype");
+  font-family: "Cabinet Grotesk";
+}
+
 .app {
   background-color: #f3f3f3;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
 }
 
 .app__content {

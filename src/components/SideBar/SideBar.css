@@ -5,13 +5,11 @@
 }
 
 .sidebar__avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  border: rgba(0, 0, 0, 0.5) 1px solid;
 }
 
 .sidebar__username {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
+  font-size: 20px;
 }
