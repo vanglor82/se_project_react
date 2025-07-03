@@ -11,6 +11,8 @@ export default function AddItemModal({
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
 
+  const isFormValid = name.trim().length >= 2 && imageUrl.trim() && weather;
+
   const handleNameChange = (evt) => {
     setName(evt.target.value);
   };
@@ -38,6 +40,7 @@ export default function AddItemModal({
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isSubmitEnabled={isFormValid}
     >
       <label htmlFor="name" className="modal__label">
         Name
