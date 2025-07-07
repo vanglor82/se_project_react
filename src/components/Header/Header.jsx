@@ -5,7 +5,7 @@ import headerLogo from "../../assets/WTWR_Logo.svg";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-function Header({ addBtnClick, weatherData }) {
+function Header({ onClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -21,7 +21,7 @@ function Header({ addBtnClick, weatherData }) {
       </p>
       <ToggleSwitch />
       <button
-        onClick={addBtnClick}
+        onClick={onClick}
         type="button"
         className="header__add-clothes-btn"
       >

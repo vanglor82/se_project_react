@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 
-import { cordinates, APIkey } from "../../utils/constants";
+import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -66,7 +66,7 @@ function App() {
       });
   };
 
-   const handleDeleteItem = (id) => {
+  const handleDeleteItem = (id) => {
     deleteItem(id)
       .then(() => {
         setClothingItems((prevItems) =>
@@ -75,12 +75,12 @@ function App() {
         closeModals();
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Failed to delete item:", err);
       });
   };
 
   useEffect(() => {
-    getWeatherData(cordinates, APIkey)
+    getWeatherData(coordinates, APIkey)
       .then((data) => {
         const filterData = filterWeatherData(data);
         setWeatherData(filterData);
@@ -100,6 +100,19 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeModals();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -107,7 +120,7 @@ function App() {
       <div className="app">
         <div className="app__content">
           <Header
-            addBtnClick={handleAddClick}
+            onClick={handleAddClick}
             weatherData={weatherData}
             isWeatherDataLoaded={isWeatherDataLoaded}
           />
@@ -129,7 +142,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
-                  addBtnClick={handleAddClick}
+                  onClick={handleAddClick}
                 />
               }
             />
