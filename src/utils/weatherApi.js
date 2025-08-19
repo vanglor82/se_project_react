@@ -1,4 +1,4 @@
-import { checkResponse } from "./api"
+import { checkResponse } from "./auth"
 
 export const getWeatherData = ({ latitude, longitude }, APIkey) => {
   return fetch(

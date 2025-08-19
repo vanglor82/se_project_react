@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 export default function AddItemModal({
   isOpen,
   onClose,
-  onAddItemModalSubmit,
+  onAddItem,
 }) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -27,7 +27,7 @@ export default function AddItemModal({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onAddItemModalSubmit({ name, imageUrl, weather });
+    onAddItem({ name, imageUrl, weather });
   };
 
   useEffect(() => {

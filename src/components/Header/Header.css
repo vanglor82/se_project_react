@@ -1,53 +1,65 @@
 .header {
-    display: flex;  
-    align-items: center;
-    padding: 32px 0 28px;
-    font-size: 20px;   
+  display: flex;
+  align-items: center;
+  padding: 32px 0 28px;
+  font-size: 20px;
 }
 
 .header__avatar:hover {
   cursor: pointer;
 }
 
-
 .header__logo {
-    margin-right: 24px;
-    cursor: pointer;
+  margin-right: 24px;
+  cursor: pointer;
 }
 
 .header__link {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #000;
 }
 
 .header__date-location {
-    margin: 0;
-    cursor: pointer;
-}
-
-.header__add-clothes-btn {
-    margin: 0 20px 0 0;
-    border: none;
-    cursor: pointer;
-}
-
-.header__add-clothes-btn:hover {
-    opacity: 70%;
-    transition: ease-in-out 0.3s;
+  margin: 0;
+  cursor: pointer;
 }
 
 .header__user-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .header__username {
-    margin: 0;
-    cursor: pointer;
+  margin: 0;
+  cursor: pointer;
 }
 
-.header__username:hover {
-    opacity: 70%;
-    transition: ease-in-out 0.3s;
+.header__add-clothes-btn,
+.header__register-btn,
+.header__login-btn,
+.header__logout-btn {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.header__register-btn {
+  margin: 0 20px 0 0;
+}
+
+.header__add-clothes-btn {
+  margin: 0 20px 0 0;
+}
+
+.header__add-clothes-btn:hover,
+.header__username:hover,
+.header__register-btn:hover,
+.header__login-btn:hover,
+.header__logout-btn:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
 }
