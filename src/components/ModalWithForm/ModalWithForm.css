@@ -1,78 +1,91 @@
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* more opaque */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  z-index: 1000; /* much higher than card elements */
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
 }
 
 .modal_opened {
-    visibility: visible;
+  visibility: visible;
 }
 
 .modal__close {
-    position: absolute;
-    top: 20px;
-    right: 28px;
-    width: 20px;
-    height: 20px;
-    background-image: url(../../assets/close-btn.png);
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    padding: 0;
-    margin: 0;
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background-image: url(../../assets/close-btn.png);
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .modal__title {
-    margin: 28px 0 0 28px;
-    font-size: 16px;
+  margin: 28px 0 0 28px;
+  font-size: 16px;
 }
 
 .modal__content {
-    position: relative;
-    background-color: #fff;
-    border-radius: 20px;
-    max-width: 498px;
-    max-height: 610px;
-    width: 100%;
-    box-sizing: border-box;
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  max-width: 498px;
+  max-height: 610px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .modal__form {
-    display: flex;
-    flex-direction: column;
-    width: 440px;
-    gap: 24px;
-    margin: 24px 28px 36px 28px ;
+  display: flex;
+  flex-direction: column;
+  width: 440px;
+  gap: 24px;
+  margin: 24px 28px 36px 28px;
 }
 
 .modal__input {
-    display: block;
-    width: 100%;
-    margin-top: 8px;
-    border: none;
-    border-bottom: 1px solid;
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  border: none;
+  border-bottom: 1px solid;
 }
 
 .modal__radio-title {
-    margin: 0 0 12px;
-    font-size: 16px;
+  margin: 0 0 12px;
+  font-size: 16px;
 }
 
 .modal__radio-label {
-    gap: 8px;
-    display: flex;
-    opacity: 50%;
+  gap: 8px;
+  display: flex;
+  opacity: 50%;
 }
 
 .modal__radio-label:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal__radio-label:has(input:checked) {
@@ -80,33 +93,33 @@
 }
 
 .modal__radio-btns {
-    display: flex;
-    flex-direction: column;
-    border: none;
-    padding: 0;
-    gap: 8px;   
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 0;
+  gap: 8px;
 }
 
 .modal__radio-input {
-    accent-color: #000;
-    cursor: pointer;
+  accent-color: #000;
+  cursor: pointer;
 }
 
 .modal__submit {
-    width: 124px;
-    height: 36px;
-    background-color: #000;
-    opacity: 30%;
-    color: #fff;
-    border-radius: 4px;
-    margin-top: 8px;
-    border: none;
-    cursor: pointer;
+  width: 124px;
+  height: 36px;
+  background-color: #000;
+  opacity: 30%;
+  color: #fff;
+  border-radius: 4px;
+  margin-top: 8px;
+  border: none;
+  cursor: pointer;
 }
 
 .modal__submit:hover {
-    opacity: 50%;
-    transition: ease-in-out 0.3s;
+  opacity: 50%;
+  transition: ease-in-out 0.3s;
 }
 
 .modal__submit-active {

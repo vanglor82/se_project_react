@@ -1,1 +1,11 @@
+.profile {
+  position: relative;
+  display: flex;
+  padding: 40px;
+  bottom: 30px;
+}
 
+.profile__sidebar {
+  position: relative;
+  right: 45px;
+}

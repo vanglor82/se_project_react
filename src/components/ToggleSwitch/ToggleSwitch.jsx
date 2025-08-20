@@ -8,8 +8,10 @@ export default function ToggleSwitch() {
   );
 
   return (
-    <label className="toggle-switch">
+    <label htmlFor="temperature-switch" className="toggle-switch">
       <input
+        id="temperature-switch"
+        name="temperature-switch"
         onChange={handleToggleSwitchChange}
         type="checkbox"
         className="toggle-switch__checkbox"

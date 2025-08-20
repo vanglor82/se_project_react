@@ -2,11 +2,7 @@ import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 
-export default function AddItemModal({
-  isOpen,
-  onClose,
-  onAddItem,
-}) {
+export default function AddItemModal({ isOpen, onClose, onAddItem }) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
@@ -47,18 +43,19 @@ export default function AddItemModal({
       onSubmit={handleSubmit}
       isSubmitEnabled={isFormValid}
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="item-name" className="modal__label">
         Name
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="item-name"
           placeholder="Name"
           required
           minLength="2"
           maxLength="40"
           onChange={handleNameChange}
           value={name}
+          autoComplete="off"
         />
       </label>
       <label htmlFor="imageUrl" className="modal__label">
@@ -71,6 +68,7 @@ export default function AddItemModal({
           required
           onChange={handleImageUrlChange}
           value={imageUrl}
+          autoComplete="url"
         />
       </label>
       <fieldset className="modal__radio-btns">

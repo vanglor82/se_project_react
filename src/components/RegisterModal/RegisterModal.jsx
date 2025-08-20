@@ -64,6 +64,7 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
           maxLength="40"
           onChange={handleNameChange}
           value={name}
+          autoComplete="name"
           required
         />
       </label>
@@ -77,18 +78,20 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
           required
           onChange={handleAvatarChange}
           value={avatar}
+          autoComplete="photo"
         />
       </label>
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="register-email" className="modal__label">
         Email
         <input
-          type="register-email"
+          type="email"
           className="modal__input"
           id="register-email"
           placeholder="Email"
           required
           minLength="2"
           maxLength="40"
+          autoComplete="email"
           onChange={handleEmailChange}
           value={email}
         />
@@ -102,6 +105,7 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
           placeholder="Password"
           required
           onChange={handlePasswordChange}
+          autoComplete="new-password"
           value={password}
         />
       </label>

@@ -25,10 +25,10 @@ const isDay = ({ sunrise, sunset }, now) => {
 
 const getWeatherType = (temperature) => {
   if (temperature >= 72) {
-    return "hot";
+    return "Hot";
   } else if (temperature >= 66) {
-    return "warm";
+    return "Warm";
   } else {
-    return "cold";
+    return "Cold";
   }
 };

@@ -12,7 +12,6 @@ function Header({
   isLoggedIn,
   onLoginClick,
   onRegisterClick,
-  onLogout,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -49,9 +48,6 @@ function Header({
               />
             </div>
           </Link>
-          <button className="header__logout-btn" onClick={onLogout}>
-            Log out
-          </button>
         </>
       ) : (
         <>

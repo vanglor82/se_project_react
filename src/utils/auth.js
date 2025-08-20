@@ -34,4 +34,15 @@ export function checkToken(token) {
   }).then(checkResponse);
 }
 
+export function editProfile({ name, avatar }, token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(checkResponse);
+}
+
 export { baseUrl, checkResponse };

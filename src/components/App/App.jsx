@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import "./App.css";
 
@@ -13,7 +13,13 @@ import { filterWeatherData, getWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { getItems, addItem, deleteItem } from "../../utils/api";
+import {
+  getItems,
+  addItem,
+  deleteItem,
+  addCardLike,
+  removeCardLike,
+} from "../../utils/api";
 import * as auth from "../../utils/auth";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import LoginModal from "../LoginModal/LoginModal";
@@ -37,6 +43,7 @@ function App() {
   const [isWeatherDataLoaded, setIsWeatherDataLoaded] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
@@ -69,7 +76,7 @@ function App() {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setCurrentUser({});
+    setCurrentUser(null);
     localStorage.removeItem("jwt");
   };
 
@@ -83,9 +90,12 @@ function App() {
 
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     const token = localStorage.getItem("jwt");
-    addItem({ name, link: imageUrl, weather }, token)
+    addItem({ name, imageUrl, weather }, token)
       .then((newItem) => {
-        setClothingItems((prevItems) => [newItem.data, ...prevItems]);
+        setClothingItems((prevItems) => [
+          newItem.data || newItem,
+          ...prevItems,
+        ]);
         closeModals();
       })
       .catch((err) => {
@@ -105,8 +115,9 @@ function App() {
       })
       .then((userData) => {
         setIsLoggedIn(true);
-        setCurrentUser(userData.data);
+        setCurrentUser(userData.data || userData);
         closeModals();
+        navigate("/profile");
       })
       .catch((err) => {
         console.error("Login failed:", err);
@@ -141,7 +152,7 @@ function App() {
     auth
       .editProfile({ name, avatar }, token)
       .then((updatedUser) => {
-        setCurrentUser(updatedUser.data);
+        setCurrentUser(updatedUser.data || updatedUser);
         closeModals();
       })
       .catch((err) => {
@@ -151,23 +162,27 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    !isLiked
-      ? api
-          .addCardLike(id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
-            );
+    const apiCall = isLiked
+      ? removeCardLike(id, token)
+      : addCardLike(id, token);
+
+    apiCall
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) => {
+            if (item._id === id) {
+              // Use isLiked from backend if available, otherwise toggle locally
+              const newIsLiked =
+                typeof updatedCard.isLiked === "boolean"
+                  ? updatedCard.isLiked
+                  : !isLiked;
+              return { ...item, ...updatedCard, isLiked: newIsLiked };
+            }
+            return item;
           })
-          .catch((err) => console.log(err))
-      : api
-          .removeCardLike(id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
-            );
-          })
-          .catch((err) => console.log(err));
+        );
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -197,9 +212,10 @@ function App() {
       auth
         .checkToken(jwt)
         .then((res) => {
-          if (res) {
+          const user = res?.data || res;
+          if (user && user.id) {
             setIsLoggedIn(true);
-            setCurrentUser(res.data);
+            setCurrentUser(user);
           }
         })
         .catch((err) => {
@@ -232,8 +248,10 @@ function App() {
               onClick={handleAddItem}
               weatherData={weatherData}
               isWeatherDataLoaded={isWeatherDataLoaded}
+              isLoggedIn={isLoggedIn}
               onLoginClick={handleLogin}
               onRegisterClick={handleRegister}
+              onLogout={handleLogout}
             />
             <Routes>
               <Route
@@ -244,6 +262,7 @@ function App() {
                     onCardClick={handleCardPreview}
                     isWeatherDataLoaded={isWeatherDataLoaded}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -258,8 +277,8 @@ function App() {
                       currentUser={currentUser}
                       onDeleteClick={handleDelete}
                       isLoggedIn={isLoggedIn}
-                      onLogoutClick={handleLogout}
-                      onEditProfileClick={handleEditProfile}
+                      onLogout={handleLogout}
+                      onEditProfile={handleEditProfile}
                       onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>

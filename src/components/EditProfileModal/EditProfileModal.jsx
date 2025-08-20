@@ -9,6 +9,8 @@ function EditProfileModal({ onClose, isOpen, onEditProfile }) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
 
+  const isFormValid = name.trim().length >= 2 && avatar.trim();
+
   const handleNameChange = (evt) => {
     setName(evt.target.value);
   };
@@ -19,23 +21,26 @@ function EditProfileModal({ onClose, isOpen, onEditProfile }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onEditProfile({ name, avatar });
+    if (isFormValid) {
+      onEditProfile({ name, avatar });
+    }
   };
 
   useEffect(() => {
-    if (isOpen) {
-      setName(currentUser.name);
-      setAvatar(currentUser.avatar);
+    if (isOpen && currentUser) {
+      setName(currentUser.name || "");
+      setAvatar(currentUser.avatar || "");
     }
-  }, [isOpen]);
+  }, [isOpen, currentUser]);
 
   return (
     <ModalWithForm
       isOpen={isOpen}
-      title="Edit Profile"
+      titleText="Edit Profile"
       buttonText="Save changes"
       onClose={onClose}
-      handleSubmit={handleSubmit}
+      onSubmit={handleSubmit}
+      isSubmitEnabled={isFormValid}
     >
       <label htmlFor="edit-name" className="modal__label">
         Name

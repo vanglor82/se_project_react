@@ -23,9 +23,7 @@ function deleteItem(id) {
     headers: {
       authorization: `Bearer ${token}`,
     },
-  }).then(
-    checkResponse
-  );
+  }).then(checkResponse);
 }
 
 function getUserInfo() {
@@ -37,4 +35,35 @@ function getUserInfo() {
   }).then(checkResponse);
 }
 
-export { getItems, addItem, deleteItem, getUserInfo };
+function processResponse(res) {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+}
+
+const addCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processResponse);
+};
+
+const removeCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processResponse);
+};
+
+export {
+  getItems,
+  addItem,
+  deleteItem,
+  getUserInfo,
+  addCardLike,
+  removeCardLike,
+};
