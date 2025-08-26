@@ -1,12 +1,13 @@
-import { baseUrl, checkResponse } from "./auth";
+import { BASE_URL, checkResponse } from "./auth";
+
 
 function getItems() {
-  return fetch(`${baseUrl}/items`).then(checkResponse);
+  return fetch(`${BASE_URL}/items`).then(checkResponse);
 }
 
 function addItem({ name, imageUrl, weather }) {
   const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items`, {
+  return fetch(`${BASE_URL}/items`, {
     method: "POST",
     body: JSON.stringify({ name, imageUrl, weather }),
     headers: {
@@ -18,7 +19,7 @@ function addItem({ name, imageUrl, weather }) {
 
 function deleteItem(id) {
   const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items/${id}`, {
+  return fetch(`${BASE_URL}/items/${id}`, {
     method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,
@@ -28,7 +29,7 @@ function deleteItem(id) {
 
 function getUserInfo() {
   const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     headers: {
       authorization: `Bearer ${token}`,
     },
@@ -40,7 +41,7 @@ function processResponse(res) {
 }
 
 const addCardLike = (id, token) => {
-  return fetch(`${baseUrl}/items/${id}/likes`, {
+  return fetch(`${BASE_URL}/items/${id}/likes`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -50,7 +51,7 @@ const addCardLike = (id, token) => {
 };
 
 const removeCardLike = (id, token) => {
-  return fetch(`${baseUrl}/items/${id}/likes`, {
+  return fetch(`${BASE_URL}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

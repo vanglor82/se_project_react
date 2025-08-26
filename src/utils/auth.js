@@ -1,11 +1,13 @@
-const baseUrl = "http://localhost:3001";
+const BASE_URL =  process.env.NODE_ENV === "production" 
+  ? "https:api.vanglor-wtwr.jumpingcrab.com"
+  : "http://localhost:3001";
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 
 export function signup({ name, avatar, email, password }) {
-  return fetch(`${baseUrl}/signup`, {
+  return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +17,7 @@ export function signup({ name, avatar, email, password }) {
 }
 
 export function signin({ email, password }) {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +27,7 @@ export function signin({ email, password }) {
 }
 
 export function checkToken(token) {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +37,7 @@ export function checkToken(token) {
 }
 
 export function editProfile({ name, avatar }, token) {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -45,4 +47,4 @@ export function editProfile({ name, avatar }, token) {
   }).then(checkResponse);
 }
 
-export { baseUrl, checkResponse };
+export { BASE_URL, checkResponse };
