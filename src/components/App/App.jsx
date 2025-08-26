@@ -171,7 +171,6 @@ function App() {
         setClothingItems((cards) =>
           cards.map((item) => {
             if (item._id === id) {
-              // Use isLiked from backend if available, otherwise toggle locally
               const newIsLiked =
                 typeof updatedCard.isLiked === "boolean"
                   ? updatedCard.isLiked
