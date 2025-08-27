@@ -1,5 +1,5 @@
 const BASE_URL =  process.env.NODE_ENV === "production" 
-  ? "https:api.vanglor-wtwr.jumpingcrab.com"
+  ? "https://api.vanglor-wtwr.jumpingcrab.com"
   : "http://localhost:3001";
 
 function checkResponse(res) {
