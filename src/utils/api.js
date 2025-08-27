@@ -36,10 +36,6 @@ function getUserInfo() {
   }).then(checkResponse);
 }
 
-function processResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-}
-
 const addCardLike = (id, token) => {
   return fetch(`${BASE_URL}/items/${id}/likes`, {
     method: "PUT",
@@ -47,7 +43,7 @@ const addCardLike = (id, token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(processResponse);
+  }).then(checkResponse);
 };
 
 const removeCardLike = (id, token) => {
@@ -57,7 +53,7 @@ const removeCardLike = (id, token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(processResponse);
+  }).then(checkResponse);
 };
 
 export {
