@@ -5,8 +5,7 @@ function getItems() {
   return fetch(`${BASE_URL}/items`).then(checkResponse);
 }
 
-function addItem({ name, imageUrl, weather }) {
-  const token = localStorage.getItem("jwt");
+function addItem({ name, imageUrl, weather }, token) {
   return fetch(`${BASE_URL}/items`, {
     method: "POST",
     body: JSON.stringify({ name, imageUrl, weather }),
@@ -17,8 +16,7 @@ function addItem({ name, imageUrl, weather }) {
   }).then(checkResponse);
 }
 
-function deleteItem(id) {
-  const token = localStorage.getItem("jwt");
+function deleteItem(id, token) {
   return fetch(`${BASE_URL}/items/${id}`, {
     method: "DELETE",
     headers: {
@@ -27,8 +25,7 @@ function deleteItem(id) {
   }).then(checkResponse);
 }
 
-function getUserInfo() {
-  const token = localStorage.getItem("jwt");
+function getUserInfo(token) {
   return fetch(`${BASE_URL}/users/me`, {
     headers: {
       authorization: `Bearer ${token}`,
