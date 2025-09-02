@@ -1,8 +1,11 @@
 import { BASE_URL, checkResponse } from "./auth";
 
-
-function getItems() {
-  return fetch(`${BASE_URL}/items`).then(checkResponse);
+function getItems(token) {
+  return fetch(`${BASE_URL}/items`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
 }
 
 function addItem({ name, imageUrl, weather }, token) {
