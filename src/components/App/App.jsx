@@ -168,10 +168,9 @@ function App() {
 
     apiCall
       .then((updatedCard) => {
+        const card = updatedCard.data || updatedCard;
         setClothingItems((cards) =>
-          cards.map((item) =>
-            item._id === id ? { ...item, ...updatedCard } : item
-          )
+          cards.map((item) => (item._id === id ? card : item))
         );
       })
       .catch((err) => console.log(err));
