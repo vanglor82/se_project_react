@@ -6,7 +6,12 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function ClothesSection({ onCardClick, clothingItems, onClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
   const userItems = clothingItems.filter(
-    (item) => item.owner === currentUser?._id
+    (item) =>
+      item.owner === currentUser?._id ||
+      item.owner === currentUser?.id ||
+      (typeof item.owner === "object" &&
+        (item.owner._id === currentUser?._id ||
+          item.owner.id === currentUser?.id))
   );
   return (
     <div className="clothes-section">
