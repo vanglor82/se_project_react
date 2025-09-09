@@ -43,6 +43,7 @@ function App() {
   const [isWeatherDataLoaded, setIsWeatherDataLoaded] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const handleToggleSwitchChange = () => {
@@ -211,7 +212,10 @@ function App() {
         })
         .catch((err) => {
           console.error("Token check failed:", err);
-        });
+        })
+        .finally(() => setLoading(false));
+    } else {
+      setLoading(false);
     }
   }, []);
 
@@ -227,6 +231,8 @@ function App() {
       document.removeEventListener("keydown", handleEscClose);
     };
   }, [activeModal]);
+
+  if (loading) return null;
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
