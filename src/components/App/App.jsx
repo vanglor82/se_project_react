@@ -169,16 +169,9 @@ function App() {
     apiCall
       .then((updatedCard) => {
         setClothingItems((cards) =>
-          cards.map((item) => {
-            if (item._id === id) {
-              const newIsLiked =
-                typeof updatedCard.isLiked === "boolean"
-                  ? updatedCard.isLiked
-                  : !isLiked;
-              return { ...item, ...updatedCard, isLiked: newIsLiked };
-            }
-            return item;
-          })
+          cards.map((item) =>
+            item._id === id ? { ...item, ...updatedCard } : item
+          )
         );
       })
       .catch((err) => console.log(err));
@@ -273,7 +266,6 @@ function App() {
                       onCardClick={handleCardPreview}
                       clothingItems={clothingItems}
                       onClick={handleAddItem}
-                      currentUser={currentUser}
                       onDeleteClick={handleDelete}
                       isLoggedIn={isLoggedIn}
                       onLogout={handleLogout}

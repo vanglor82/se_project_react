@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 export default function LoginModal({
   isOpen,
   onClose,
-  onLogin
+  onLogin,
+  onRegisterClick,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -67,6 +68,25 @@ export default function LoginModal({
           value={password}
         />
       </label>
+      <div className="modal__switch-row">
+        <button
+          type="submit"
+          className={`modal__submit ${
+            isFormValid ? "modal__submit-active" : ""
+          }`}
+          disabled={!isFormValid}
+        >
+          Log in
+        </button>
+        <button
+          type="button"
+          id="login-switch-btn"
+          className="modal__switch-btn"
+          onClick={onRegisterClick}
+        >
+          or Sign Up
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

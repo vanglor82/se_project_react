@@ -2,7 +2,12 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 
-export default function RegisterModal({ isOpen, onClose, onRegister }) {
+export default function RegisterModal({
+  isOpen,
+  onClose,
+  onRegister,
+  onLoginClick,
+}) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
@@ -109,6 +114,24 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
           value={password}
         />
       </label>
+      <div className="modal__switch-row">
+        <button
+          type="submit"
+          className={`modal__submit ${
+            isFormValid ? "modal__submit-active" : ""
+          }`}
+          disabled={!isFormValid}
+        >
+          Sign up
+        </button>
+        <button
+          type="button"
+          className="modal__switch-btn"
+          onClick={onLoginClick}
+        >
+          or Log In
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

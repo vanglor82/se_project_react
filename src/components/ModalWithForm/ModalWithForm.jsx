@@ -20,15 +20,18 @@ function ModalWithForm({
         ></button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button
-            type="submit"
-            className={`modal__submit ${
-              isSubmitEnabled ? "modal__submit-active" : ""
-            }`}
-            disabled={!isSubmitEnabled}
-          >
-            {buttonText}
-          </button>
+          {/* The submit button is now handled in RegisterModal for custom layout */}
+          {titleText !== "Sign up" && titleText !== "Log in" && (
+            <button
+              type="submit"
+              className={`modal__submit ${
+                isSubmitEnabled ? "modal__submit-active" : ""
+              }`}
+              disabled={!isSubmitEnabled}
+            >
+              {buttonText}
+            </button>
+          )}
         </form>
       </div>
     </div>
