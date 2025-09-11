@@ -1,6 +1,8 @@
-const BASE_URL =  process.env.NODE_ENV === "production" 
-  ? "https://api.vanglor-wtwr.jumpingcrab.com"
-  : "http://localhost:3001";
+/* global process */
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.vanglor-wtwr.jumpingcrab.com"
+    : "http://localhost:3001";
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
